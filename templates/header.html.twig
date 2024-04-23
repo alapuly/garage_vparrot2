@@ -1,0 +1,24 @@
+{% block header %}
+	<header>
+		<img src="{{asset('images/icon_cutout.png')}}" alt="Logo Garage V.Parrot" style="width:200px">
+		<p>Votre spécialiste en carrosserie, mécanique et entretien automobile</p>
+
+		<ul class="nav align-items-center notype_list">
+			<li>
+				<a class="nav-link primary" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+			</li>
+			<li>
+				<a class="nav-link primary" href="{{ path('app_shop') }}">Vente d'occasion</a>
+			</li>
+			{# <li>
+				<a class="nav-link primary" href="{{ path('Login')}}">
+					<form class="container-fluid ml-auto">
+						{% block logbutton %}
+							<button class="btn ml-auto primary" type="button">Se connecter</button>
+						{% endblock %}
+					</form>
+				</a>
+			</li> #}
+		</ul>
+	</header>
+{% endblock %}

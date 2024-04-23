@@ -1,3 +1,80 @@
-body {
-    background-color: skyblue;
+:root {
+    --color-primary: #C70039;
+    /*var(--color-primary)*/
+
+    --color-primary-dark: hsl(343, 100%, 29%);
+    /*var(--color-primary-dark)*/
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: var(--color-primary);
+    padding: 1em 0;
+}
+
+.open-sans {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "width" 100;
+}
+
+.notype_list li {
+    list-style-type: none;
+    background-color: #ffffff;
+}
+
+ul li {
+    list-style-type: circle;
+}
+
+main {
+    margin: 0;
+    padding: 0;
+    max-height: 100%;
+    max-width: 100%;
+    background-color: #333333;
+    color: white;
+    padding: 1%;
+}
+
+
+.primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary-dark);
+    outline: none;
+}
+
+.primary:hover,
+.primary:active {
+    color: var(--color-primary-dark);
+}
+
+.btn:hover,
+.btn:active {
+    border-color: var(--color-primary-dark);
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+header,
+footer {
+    text-align: center;
+    padding: 0, 5%;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    padding: 1em 0;
 }
