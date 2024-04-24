@@ -2,7 +2,6 @@
 	<header>
 		<a href="{{ path('app_home')}}"><img src="{{asset('images/icon_cutout.png')}}" alt="Logo Garage V.Parrot" style="width:200px"></a>
 		<p>Votre spécialiste en carrosserie, mécanique et entretien automobile</p>
-
 		<ul class="nav align-items-center notype_list">
 			<li>
 				<a class="nav-link primary" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
@@ -10,20 +9,27 @@
 			<li>
 				<a class="nav-link primary" href="{{ path('app_shop') }}">Vente d'occasion</a>
 			</li>
-			<li>
-				<a class="nav-link primary" href="{{ path('app_login')}}">
-					<form class="container-fluid ml-auto">
-						{% if app.user %}
-							<div class="mb-3">
-								Vous êtes connecté en tant que 
-								{{ app.user.userIdentifier }},
-								<a href="{{ path('app_logout') }}">Se déconnecter</a>
-							</div>
-						{% endif %}
-						<button class="btn ml-auto primary" type="button">Se connecter</button>
-					</form>
-				</a>
-			</li>
+			{% if app.user %}
+				<li class="nav-link text-dark">
+					Vous êtes connecté en tant que
+					{{ app.user.userIdentifier }}
+				</li>
+				<li>
+					<a class="nav-link primary" href="{{ path('app_logout') }}">
+						<button class="btn ml-auto primary" type="button">
+							Se déconnecter
+						</button>
+					</a>
+				</li>
+			{% else %}
+				<li>
+					<a class="nav-link primary" href="{{ path('app_login')}}">
+						<button class="btn ml-auto primary" type="button">
+							Se connecter
+						</button>
+					</a>
+				</li>
+			{% endif %}
 		</ul>
 	</header>
 {% endblock %}

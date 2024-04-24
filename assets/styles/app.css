@@ -34,6 +34,7 @@ h4 {
 
 ul li {
     list-style-type: circle;
+    padding: 0 1em;
 }
 
 main {
@@ -77,4 +78,8 @@ img {
 
 p {
     padding: 1em 0;
+}
+
+.center {
+    align-items: center;
 }
