@@ -10,15 +10,20 @@
 			<li>
 				<a class="nav-link primary" href="{{ path('app_shop') }}">Vente d'occasion</a>
 			</li>
-			{# <li>
-				<a class="nav-link primary" href="{{ path('Login')}}">
+			<li>
+				<a class="nav-link primary" href="{{ path('app_login')}}">
 					<form class="container-fluid ml-auto">
-						{% block logbutton %}
-							<button class="btn ml-auto primary" type="button">Se connecter</button>
-						{% endblock %}
+						{% if app.user %}
+							<div class="mb-3">
+								Vous êtes connecté en tant que 
+								{{ app.user.userIdentifier }},
+								<a href="{{ path('app_logout') }}">Se déconnecter</a>
+							</div>
+						{% endif %}
+						<button class="btn ml-auto primary" type="button">Se connecter</button>
 					</form>
 				</a>
-			</li> #}
+			</li>
 		</ul>
 	</header>
 {% endblock %}

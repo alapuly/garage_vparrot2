@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block main %}
+
+{% if is_granted('ROLE_ADMIN') %}
+	<div class="profile">
+		{{ app.user.userIdentifier }}
+		<br>Administrateur</div>
+
+	<div class="edits">
+		<div class="timetable">Modifier les horaires d'ouverture</div>
+	</div>
+{% endif %}
+
+{% endblock %}

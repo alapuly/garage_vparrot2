@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block main %}
+
+<div class="profile">
+		{{ app.user.userIdentifier }}
+		<br>Employé</div>
+
+	<div class="edits">
+		<div class="timetable">Gérer les annonces</div>
+        <div class="comments">Gérer les témoignages</div>
+	</div>
+
+{% endblock %}

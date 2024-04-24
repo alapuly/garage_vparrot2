@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter
+{% endblock %}
+
+{% block main %}
+
+	<form method="post">
+
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		<h1>Se connecter</h1>
+		<div class="mb-3">
+			<label for="inputEmail" class="form-label">Adresse électronique</label>
+			<input type="email" name="email" id="inputEmail" class="form-control form-control-sm primary" aria-describedby="emailHelp" autocomplete="email" required autofocus>
+		</div>
+		<div class="mb-3">
+			<label for="inputPassword" class="form-label">Mot de passe</label>
+			<input type="password" name="password" id="inputPassword" class="form-control form-control-sm primary" autocomplete="current-password" required>
+		</div>
+		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+		<div class="form-check mt-3 checkbox">
+			<label class="form-check-label">
+				<input type="checkbox" name="_remember_me" class="form-check-input">
+				Se souvenir de moi
+			</label>
+		</div>
+
+		<button class="btn btn-lg mt-3 primary" type="submit">
+			Se connecter
+		</button>
+	</form>
+{% endblock %}

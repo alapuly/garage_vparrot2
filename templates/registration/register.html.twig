@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block main %}
+	<h1>Ajouter un utilisateur</h1>
+	<fieldset class="mb-3">
+		{{ form_errors(registrationForm) }}
+
+		{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.email, {
+            label: 'E-mail'}) }}
+		{{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+		<button type="submit" class="btn btn-primary">Inscrire</button>
+		{{ form_end(registrationForm) }}
+	</fieldset>
+{% endblock %}
