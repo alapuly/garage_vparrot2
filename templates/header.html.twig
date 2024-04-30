@@ -21,6 +21,23 @@
 						</button>
 					</a>
 				</li>
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a class="nav-link primary" href="{{ path('app_admin') }}">
+							<button class="btn ml-auto primary" type="button">
+								Profil
+							</button>
+						</a>
+					</li>
+				{% else %}
+					<li>
+						<a class="nav-link primary" href="{{ path('app_profile') }}">
+							<button class="btn ml-auto primary" type="button">
+								Profil
+							</button>
+						</a>
+					</li>
+				{% endif %}
 			{% else %}
 				<li>
 					<a class="nav-link primary" href="{{ path('app_login')}}">

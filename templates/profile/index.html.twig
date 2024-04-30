@@ -1,16 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon profil{% endblock %}
+{% block title %}Mon profil
+{% endblock %}
 
 {% block main %}
 
-<div class="profile">
-		{{ app.user.userIdentifier }}
-		<br>Employé</div>
+	{% if is_granted('ROLE_USER') %}
+		<div class="profile">
+			<h3>{{ app.user.userIdentifier }}
+				- Employé(e)
+			</h3>
+		</div>
 
-	<div class="edits">
-		<div class="timetable">Gérer les annonces</div>
-        <div class="comments">Gérer les témoignages</div>
-	</div>
-
+		<div class="edits">
+			<div class="annonces">
+				<a class="nav-link" href="{{ path('app_register') }}">
+					<button class="btn ml-auto primary" type="button">
+						Gérer les annonces
+					</button>
+				</a>
+			</div>
+			<div class="temoignages">
+				<a class="nav-link" href="{{ path('app_register') }}">
+					<button class="btn ml-auto primary" type="button">
+						Gérer les témoignages
+					</button>
+				</a>
+			</div>
+		</div>
+	{% endif %}
 {% endblock %}
