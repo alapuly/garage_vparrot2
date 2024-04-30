@@ -12,9 +12,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
+use Doctrine\ORM\EntityManagerInterface;
 
 class RegistrationFormType extends AbstractType
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -42,6 +52,21 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
+                $user = $event->getData();
+                $form = $event->getForm();
+                
+                // Check if it's the first user registering
+                $userRepository = $this->entityManager->getRepository(User::class);
+                $existingUsers = $userRepository->findAll();
+    
+                if (empty($existingUsers)) {
+                    $user->setRoles(['ROLE_ADMIN']);
+                } else {
+                    // Assign ROLE_USER if =<1
+                    $user->setRoles(['ROLE_USER']);
+                }
+            })
         ;
     }
 

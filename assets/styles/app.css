@@ -83,3 +83,16 @@ p {
 .center {
     align-items: center;
 }
+
+.edits,
+.profile,
+.edits button {
+    color: white;
+    margin: 1em;
+    align-items: center;
+    justify-content: center;
+}
+
+.edits button{
+display: flex;
+}

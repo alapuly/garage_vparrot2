@@ -1,17 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon profil{% endblock %}
+{% block title %}Mon profil
+{% endblock %}
 
 {% block main %}
 
-{% if is_granted('ROLE_ADMIN') %}
-	<div class="profile">
-		{{ app.user.userIdentifier }}
-		<br>Administrateur</div>
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="profile">
+			<h3>{{ app.user.userIdentifier }}
+			- Administrateur
+			</h3>
+		</div>
 
-	<div class="edits">
-		<div class="timetable">Modifier les horaires d'ouverture</div>
-	</div>
-{% endif %}
+		<div class="edits">
+			<div class="register">
+				<a class="nav-link" href="{{ path('app_register') }}">
+					<button class="btn ml-auto primary" type="button">
+						Ajouter un utilisateur
+					</button>
+				</a>
+			</div>
+			<div class="horaires">
+				<a class="nav-link" href="{{ path('app_register') }}">
+					<button class="btn ml-auto primary" type="button">
+						Modifier les horaires d'ouverture
+					</button>
+				</a>
+			</div>
+		</div>
+	{% endif %}
 
 {% endblock %}

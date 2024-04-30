@@ -4,17 +4,19 @@
 {% endblock %}
 
 {% block main %}
-	<h1>Ajouter un utilisateur</h1>
-	<fieldset class="mb-3">
-		{{ form_errors(registrationForm) }}
+	{% if is_granted('ROLE_ADMIN') %}
+		<h1>Ajouter un utilisateur</h1>
+		<fieldset class="mb-3">
+			{{ form_errors(registrationForm) }}
 
-		{{ form_start(registrationForm) }}
-		{{ form_row(registrationForm.email, {
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.email, {
             label: 'E-mail'}) }}
-		{{ form_row(registrationForm.plainPassword, {
+			{{ form_row(registrationForm.plainPassword, {
             label: 'Mot de passe'
         }) }}
-		<button type="submit" class="btn btn-primary">Inscrire</button>
-		{{ form_end(registrationForm) }}
-	</fieldset>
+			<button type="submit" class="btn btn-primary">Inscrire</button>
+			{{ form_end(registrationForm) }}
+		</fieldset>
+	{% endif %}
 {% endblock %}
