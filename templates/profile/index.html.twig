@@ -14,12 +14,48 @@
 
 		<div class="edits">
 			<div class="annonces">
-				<a class="nav-link" href="{{ path('app_register') }}">
+				<a class="nav-link">
+					<button class="btn ml-auto primary" id="toggleButton" type="button">
+						Ajouter une annonce
+					</button>
+				</a>
+			</div>
+				<fieldset class="mb-3" id="carForm" style="display:none">
+					{{ form_errors(CarAd) }}
+
+					{{ form_start(CarAd) }}
+
+
+					{{ form_row(CarAd.model_type, {
+            label: 'Modèle'}) }}
+
+					{{ form_row(CarAd.price, {
+            label: 'Prix'}) }}
+
+					{{ form_row(CarAd.AMC, {
+            label: 'Année de mise en circulation'}) }}
+
+					{{ form_row(CarAd.kilometres, {
+            label: 'Kilomètres'}) }}
+
+					{{ form_row(CarAd.fuel, {
+            label: 'Carburant'}) }}
+
+					{{ form_row(CarAd.BV_transmission, {
+            label: 'Boite de vitesse'}) }}
+
+					<button type="submit" class="btn ml-auto primary">Soumettre</button>
+					{{ form_end(CarAd) }}
+				</fieldset>
+
+			<div class="annonces">
+				<a class="nav-link">
 					<button class="btn ml-auto primary" type="button">
 						Gérer les annonces
 					</button>
 				</a>
 			</div>
+
 			<div class="temoignages">
 				<a class="nav-link" href="{{ path('app_register') }}">
 					<button class="btn ml-auto primary" type="button">
