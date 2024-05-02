@@ -37,9 +37,10 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password',
-                'class' => 'form-control'
-            ],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'form-control'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -55,19 +56,18 @@ class RegistrationFormType extends AbstractType
             ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
                 $user = $event->getData();
                 $form = $event->getForm();
-                
-                // Check if it's the first user registering
+
                 $userRepository = $this->entityManager->getRepository(User::class);
                 $existingUsers = $userRepository->findAll();
-    
+
+                // (empty($existingUsers)=true)) ==> Admin
                 if (empty($existingUsers)) {
                     $user->setRoles(['ROLE_ADMIN']);
                 } else {
-                    // Assign ROLE_USER if =<1
+                // Otherwise ==> User
                     $user->setRoles(['ROLE_USER']);
                 }
-            })
-        ;
+            });
     }
 
     public function configureOptions(OptionsResolver $resolver): void
